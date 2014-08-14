@@ -1,8 +1,5 @@
 """Operations having to do with files."""
 
-
-
-
 def get_reader(filename):
     """returns a reader"""
 
