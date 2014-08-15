@@ -22,15 +22,18 @@ class IntegerImage(object):
         self.Image = Image.new('RGB', (x,y), 'white')
         self.ImageDraw = ImageDraw.Draw(self.Image)
 
-    def draw(self, p_red=[], p_green=[], p_blue=[]):
+    def draw(self, p_red=None, p_green=None, p_blue=None):
         """Draw the image."""
         pen = self.ImageDraw
-        
-        for i in range(x):
-            for j in range(y):
-                r =   self.red(i,j,x,y,p_red)
-                g =   self.green(i,j,x,y,p_green)
-                b =   self.blue(i,j,x,y,p_blue)
+        params_red = {}
+
+
+
+        for i in range(self.x):
+            for j in range(self.y):
+                r =   self.red({'i':i,'j':j,'x':self.x,'y':self.y,'params':p_red})
+                g =   self.green({'i':i,'j':j,'x':self.x,'y':self.y,'params':p_green})
+                b =   self.blue({'i':i,'j':j,'x':self.x,'y':self.y,'params':p_blue})
                 pen.point((i,j), (r,g,b))
 
     def show(self):
