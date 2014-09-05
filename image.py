@@ -14,12 +14,12 @@ class IntegerImage(object):
         from PIL import Image, ImageDraw
   
         self.filename = filename
-        self.red = redfn 
-        self.green = greenfn 
-        self.blue = bluefn 
+        self.redfn = redfn 
+        self.greenfn = greenfn 
+        self.bluefn = bluefn 
         self.x = x
         self.y = y
-        self.Image = Image.new('RGB', (x,y), 'white')
+        self.Image = Image.new('RGBA', (x,y), (0,0,0,1))
         self.ImageDraw = ImageDraw.Draw(self.Image)
 
     def draw(self, p_red=None, p_green=None, p_blue=None):
@@ -31,9 +31,9 @@ class IntegerImage(object):
 
         for i in range(self.x):
             for j in range(self.y):
-                r =   self.red({'i':i,'j':j,'x':self.x,'y':self.y,'params':p_red})
-                g =   self.green({'i':i,'j':j,'x':self.x,'y':self.y,'params':p_green})
-                b =   self.blue({'i':i,'j':j,'x':self.x,'y':self.y,'params':p_blue})
+                r =   self.redfn({'i':i,'j':j,'x':self.x,'y':self.y,'params':p_red})
+                g =   self.greenfn({'i':i,'j':j,'x':self.x,'y':self.y,'params':p_green})
+                b =   self.bluefn({'i':i,'j':j,'x':self.x,'y':self.y,'params':p_blue})
                 pen.point((i,j), (r,g,b))
 
     def show(self):
